@@ -23,33 +23,49 @@ router.post('/', function(req, res) {
 
 
 
-  geocoder.geocode(address.address, function(err, res) {
-    address.latitude = res[0].latitude
-    address.longitude = res[0].longitude
-    console.log('within function',address);
+  // geocoder.geocode(address.address)
+  // .then(function(err, res) {
+  //   address.latitude = res[0].latitude
+  //   address.longitude = res[0].longitude
+  //   console.log('within function',address);
+  // });
 
-    pg.connect(connection, function(err, client, done) {
-      response.sendStatus(500);
-      if(err) {
-        console.log(err);
-        res.sendStatus(500);
-      }
-      console.log('within pg',address);
-      client.query("INSERT INTO useraddress (address,latitude,longitude)VALUES($1,$2,$3)",
-        [address.address,address.latitude,address.longitude],
-        function(err, result) {
-          done();
 
-          if(err) {
-            console.log("query error: ", err);
-            res.sendStatus(500);
+    geocoder.geocode(address.address)
+    .then(function(res) {
+      address.latitude = res[0].latitude
+      address.longitude = res[0].longitude
+      console.log('within function',address);
+      pg.connect(connection, function(err, client, done) {
 
-          }
-          // created!
-          res.sendStatus(201);
+        if(err) {
+          console.log(err);
+          res.sendStatus(500);
+        }
+        console.log('within pg',address);
+        client.query("INSERT INTO useraddress (address,latitude,longitude)VALUES($1,$2,$3)",
+          [address.address,address.latitude,address.longitude],
+          function(err, result) {
+            done();
+
+            if(err) {
+              console.log("query error: ", err);
+              res.sendStatus(500);
+
+            }
+            // created!
+            res.sendStatus(201);
+        });
       });
+
+    })
+    .catch(function(err) {
+      console.log(err);
     });
-  });
+
+
+
+
 });
 
 module.exports = router;
