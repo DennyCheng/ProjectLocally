@@ -15,57 +15,28 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
+router.post('/', function(req, res, next) {
+  //we have access to req,res and put anything onto them and send them to the next
+  //matched file which is the next thing that matches (post(/));
+  //do the api request here and next to the post to the server
+  //controlling the process of middleware
 
-router.post('/', function(req, res) {
+//this first processes the inital API request and translates the address
+//into lat/long and I add that to my req.body so i can store it on my DB
+
   var address = req.body
   address.latitude = 0;
   address.longitude = 0;
 
-
-
-  // geocoder.geocode(address.address)
-  // .then(function(err, res) {
-  //   address.latitude = res[0].latitude
-  //   address.longitude = res[0].longitude
-  //   console.log('within function',address);
-  // });
-
-
-    geocoder.geocode(address.address)
-    .then(function(res) {
-      address.latitude = res[0].latitude
-      address.longitude = res[0].longitude
-      console.log('within function',address);
-      pg.connect(connection, function(err, client, done) {
-
-        if(err) {
-          console.log(err);
-          res.sendStatus(500);
-        }
-        console.log('within pg',address);
-        client.query("INSERT INTO useraddress (address,latitude,longitude)VALUES($1,$2,$3)",
-          [address.address,address.latitude,address.longitude],
-          function(err, result) {
-            done();
-
-            if(err) {
-              console.log("query error: ", err);
-              res.sendStatus(500);
-
-            }
-            // created!
-            res.sendStatus(201);
-        });
-      });
-
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-
-
-
-
+  geocoder.geocode(address.address, function(err, res) {
+    address.latitude = res[0].latitude
+    address.longitude = res[0].longitude
+  }).then(function(){
+    res.send(address);
+  });
+  
 });
+
+
 
 module.exports = router;
