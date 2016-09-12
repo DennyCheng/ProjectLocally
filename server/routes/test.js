@@ -34,7 +34,30 @@ router.post('/', function(req, res, next) {
   }).then(function(){
     res.send(address);
   });
-  
+
+});
+
+router.get('/', function(req, res) {
+  pg.connect(connection, function(err, client, done) {
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT * FROM businessaddress",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        // console.log('results: ', resultStuff);
+
+        res.send(result.rows);
+    });
+
+  });
 });
 
 

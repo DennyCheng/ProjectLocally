@@ -6,6 +6,7 @@ $scope.newAddress = {};
 $scope.stringAddress = '';
 $scope.modifiedAddress;
 $scope.distanceRadius;
+$scope.resultsArray = []; //this will hold all the results from my query
 
 //converts intaken form and concatenates it into a string
 $scope.objectToString = function(object){
@@ -40,26 +41,27 @@ $scope.submitAddress = function(){
     var intakeLatitude = $scope.modifiedAddress.data.latitude;
     var intakeLongitude = $scope.modifiedAddress.data.longitude;
 
-//computes distance from intake from user and DB to generate list of "results"
-    var distance = geolib.isPointInCircle(
-      //intake lat/long from API
-       {latitude: intakeLatitude, longitude: intakeLongitude},
+     $http.get('/test').then(function(response) {
+     console.log('GET response is', response.data);
+     //grabs the businesses from the DB so it compare input location vs business locations
+     var business  = response.data;
 
-       //these will be DB lat/long and iterate through it
-      // {latitude: 44.825039, longitude: -93.349485}, (This is perkins in bloomington for sample search)
-       {latitude: 44.825039, longitude: -93.349485},
-       radius
-     );
+     for (var i = 0; i < business.length; i++) {
+       //computes distance from intake from user and DB to generate list of "resultsArray"
+       if(geolib.isPointInCircle({latitude: intakeLatitude, longitude: intakeLongitude},{latitude: business[i].blatitude, longitude: business[i].blongitude},radius)){
+          $scope.resultsArray.push(business[i]);
+          console.log($scope.resultsArray);
+       }//end of if statement
+     };//this is the end of the for loop
+     console.log('the results are here',$scope.resultsArray);
+     });
 
-     //need to do GET request to obtain businesses from DB and put it in a loop to compare each businesses
-     //and then push TRUE results into a $scope.results array so we can show them on the DOM.
-     
+
     console.log('should be true or false',distance);
     $scope.stringAddress = '';
     $scope.newAddress = {};
+    $scope.distanceRadius='';
     });
-
 };
-
 
 }]);
