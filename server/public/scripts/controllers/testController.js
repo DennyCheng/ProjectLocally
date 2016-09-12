@@ -1,6 +1,8 @@
 
-myApp.controller('testController',['$scope','$http',function($scope,$http){
+myApp.controller('testController',['$scope','$http','DataFactory', function($scope,$http,DataFactory){
 console.log("hello from testController");
+
+$scope.dataFactory = DataFactory;
 
 $scope.newAddress = {};
 $scope.stringAddress = '';
@@ -64,4 +66,6 @@ $scope.submitAddress = function(){
     });
 };
 
+$scope.test = $scope.dataFactory.testFun();
+console.log("this is the testy test",$scope.test);
 }]);
