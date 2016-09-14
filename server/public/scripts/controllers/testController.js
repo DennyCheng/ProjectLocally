@@ -1,5 +1,5 @@
 
-myApp.controller('testController',['$scope','$http','DataFactory', function($scope,$http,DataFactory){
+myApp.controller('testController',['$scope','$http','DataFactory','$location', function($scope,$http,DataFactory,$location){
 console.log("hello from testController");
 
 $scope.dataFactory = DataFactory;
@@ -9,6 +9,11 @@ $scope.stringAddress = '';
 $scope.modifiedAddress;
 $scope.distanceRadius;
 $scope.resultsArray = []; //this will hold all the results from my query
+
+$scope.go = function go(){
+  console.log("hello bitches");
+  $location.path("/results");
+};
 
 //converts intaken form and concatenates it into a string
 $scope.objectToString = function(object){
@@ -39,6 +44,9 @@ $scope.submitAddress = function(){
     $scope.stringAddress = '';
     $scope.newAddress = {};
     $scope.distanceRadius='';
+    // $location.path("/results")
 };
+
+
 
 }]);

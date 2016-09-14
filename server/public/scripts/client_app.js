@@ -12,6 +12,10 @@ myApp.config(['$routeProvider',function($routeProvider){
       templateUrl:'/public/views/partials/test.html',
       controller:'testController'
     })
+    .when('/results',{
+      templateUrl:'/public/views/partials/resultsPage.html',
+      controller:'resultsController'
+    })
     .otherwise({
       redirectTo:'home'
     });

@@ -1,2 +1,14 @@
-<h1>Hello :D From partial</h1>
-<ng-map center="[44.822835, -93.355573]"></ng-map>
+<h1>Hello :D From home partial</h1>
+<div>
+<ng-map default-style="true" class="map" zoom="13" center="[44.822835, -93.355573]">
+      <!-- <p ng-repeat = "x in results">{{x.blatitude}},{{x.blongitude}}</p> -->
+      <marker position=[{{test.latitude}},{{test.longitude}}]></marker>
+      <!-- This is my starting point-->
+      <marker ng-repeat="x in results" position=[{{x.blatitude}},{{x.blongitude}}]>
+      </marker>
+</ng-map>
+<div ng-include="ngInclude"></div>
+</div>
+
+
+<!-- <div ng-include="'/server/public/views/partials/resultsPage.html'"></div> -->
