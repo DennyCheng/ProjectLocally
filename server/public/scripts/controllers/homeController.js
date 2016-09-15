@@ -9,6 +9,6 @@ console.log($scope.test);
 $scope.results = $scope.dataFactory.getResults();
 console.log($scope.results);
 
-$scope.ngInclude = '#/results';
+// $scope.ngInclude = '#/results';
 
 }]);

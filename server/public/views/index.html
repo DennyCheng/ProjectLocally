@@ -23,10 +23,35 @@
     <title>Locally</title>
   </head>
 
-  <body ng-app="myApp">
-    <h1> Hello map should be below</h1>
+  <body ng-app="myApp" ng-controller="naviController">
+    <!-- Start of add -->
+    <!-- <div ng-controller="naviController"> -->
+
+  <div id="mySidenav" class="sidenav">
+  <img src="/public/icons/grain.png" alt="Mountain View" style="width:190px;height:125px;">
+  <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
+  <a href="#/home" ng-click="closeNav()" >Welcome</a>
+  <a href="#/test" ng-click="closeNav()">Search</a>
+  <div> poop </div>
+  <a href="#/results">Results</a>
+  <a href="#">Random</a>
+  <div ng-include="'/public/views/partials/resultsPage.html'"></div>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<!-- <span ng-click="openNav()">open</span> -->
+<button ng-click="openNav()">Search</button>
+
+<!--  End of add-->
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="meow">
+    <h1 > Hello map should be below</h1>
 
 
-    <main ng-view></main>
+    <main >
+    <div ng-view> </div>
+  </main>
+</div>
   </body>
 </html>

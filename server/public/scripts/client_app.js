@@ -20,3 +20,26 @@ myApp.config(['$routeProvider',function($routeProvider){
       redirectTo:'home'
     });
 }]);
+
+myApp.controller("naviController", ["$scope",function($scope) {
+  console.log("hello from naviController");
+  /* Set the width of the side navigation to 250px */
+$scope.openNav = function(){
+    // document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "15%";
+    document.getElementById("meow").style.width = "85%";
+    document.getElementById("meow").style.float = "right";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+};
+
+/* Set the width of the side navigation to 0 */
+$scope.closeNav= function() {
+    // document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0";
+ document.getElementById("meow").style.marginLeft = "0";
+ document.body.style.backgroundColor = "white";
+ document.getElementById("meow").style.width = "100%";
+ document.getElementById("meow").style.float = "none"
+};
+
+}]);
