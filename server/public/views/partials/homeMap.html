@@ -2,13 +2,35 @@
 <div>
 <ng-map default-style="true" class="map" zoom="13" center="[44.822835, -93.355573]">
       <!-- <p ng-repeat = "x in results">{{x.blatitude}},{{x.blongitude}}</p> -->
-      <marker position=[{{test.latitude}},{{test.longitude}}]></marker>
-      <!-- This is my starting point-->
-      <marker ng-repeat="x in results" position=[{{x.blatitude}},{{x.blongitude}}]>
+      <marker position=[{{test.latitude}},{{test.longitude}}] icon="/public/icons/house.png" on-click="vm.showUserDetail(test)">
       </marker>
+      <info-window id="userWindow">
+      <div> <!-- Took out ng-non-bindable="" in this div -->
+          <div class="name">Starting Location</div>
+          <div class="userAddress">{{test.address.address}}</div>
+
+      </div>
+      </info-window>
+
+      <!-- This is my starting point-->
+      <marker ng-repeat="x in results" position=[{{x.blatitude}},{{x.blongitude}}] on-click="vm.showDetail(x)"
+      icon="/public/icons/purple-dot.png">
+      </marker>
+
+      <info-window id="infoWindow">
+      <div> <!-- Took out ng-non-bindable="" in this div -->
+          <div class="name">{{vm.location.bname}}</div>
+          <div class="cuisine">Cuisine: {{vm.location.bcuisine}}</div>
+          <div class="address">Address: {{vm.location.baddress}}</div>
+          <div class="phone">Phone Number: {{vm.location.bphone}}</div>
+          <div class="link">Site:
+            <a href="http://{{vm.location.bwebsite}}">{{vm.location.bwebsite}}</a></div>
+      </div>
+      </info-window>
+
 </ng-map>
 <!-- <div ng-include="'#/results'"></div> -->
 </div>
 
 
-<div ng-include="'/public/views/partials/resultsPage.html'"></div>
+<!-- <div ng-include="'/public/views/partials/resultsPage.html'"></div> -->

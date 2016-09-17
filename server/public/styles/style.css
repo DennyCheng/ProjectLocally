@@ -78,3 +78,7 @@ html, body {
 #slideBox.ng-hide {
   opacity:0;
 }
+
+.name{
+  font-weight: bold;
+}
