@@ -32,7 +32,6 @@ var currentInfo = {}
           }//end of if statement
         };//end of for loop
       });
-
     });
     return promise;
   };

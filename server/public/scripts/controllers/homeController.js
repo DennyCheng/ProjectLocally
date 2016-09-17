@@ -14,10 +14,6 @@ console.log($scope.test);
 $scope.results = $scope.dataFactory.getResults();
 console.log($scope.results);
 
-$scope.testMethod = function(test){
-  console.log("hit the testMethod");
-};
-
 $scope.vm.showDetail = function(e, location) {
    $scope.vm.location = location;
    $scope.vm.map.showInfoWindow('infoWindow', this.getPosition());  //put infoWindow at same point as marker
@@ -30,5 +26,4 @@ $scope.vm.showDetail = function(e, location) {
 
 
 // $scope.ngInclude = '#/results';
-
 }]);
