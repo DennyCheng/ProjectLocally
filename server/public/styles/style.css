@@ -56,3 +56,25 @@ html, body {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+@keyframes myChange {
+  from {
+      height: 100px;
+  } to {
+      height: 100px;
+  }
+}
+
+#slideBox {
+  height: auto;
+  background-color: white;
+  text-align: center;
+}
+
+#slideBox {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+#slideBox.ng-hide {
+  opacity:0;
+}

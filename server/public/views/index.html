@@ -14,11 +14,15 @@
     <script src="/public/vendors/geolib.elevation.js"></script>
     <script src="/public/vendors/ng-map.min.js"></script>
     <script src="/public/scripts/client_app.js"></script>
+    <script src="/public/vendors/angular-animate.min.js"></script>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script> -->
+
 
     <script type="text/javascript" src="/public/scripts/services/dataFactory.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/homeController.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/resultsController.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/testController.js"></script>
+    <script type="text/javascript" src="/public/scripts/controllers/naviController.js"></script>
 
     <title>Locally</title>
   </head>
@@ -31,7 +35,40 @@
   <img src="/public/icons/grain.png" alt="Mountain View" style="width:190px;height:125px;">
   <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
   <a href="#/home" ng-click="closeNav()" >Welcome</a>
-  <a href="#/test" ng-click="closeNav()">Search</a>
+  <a ng-click="changeValue()">Search</a>
+
+  <div ng-show="booleanClick" ng-animate="'slide'" id="slideBox">
+  <form id="addressForm">
+    <div>
+      <label for ="street">Street:</label>
+      <input type="text" id="street" name="street" ng-model="newAddress.street"/>
+    </div>
+
+    <div>
+      <label for ="city">City:</label>
+      <input type="text" id="city" name="city" ng-model="newAddress.city"/>
+    </div>
+
+    <div>
+      <label for ="state">State:</label>
+      <input type="text" id="state" name="state" ng-model="newAddress.state"/>
+    </div>
+
+    <div>
+      <label for ="zip">Zip Code:</label>
+      <input type="text" id="zip" name="zip" ng-model="newAddress.zip"/>
+    </div>
+
+    <div>
+      <label for ="distance">Distance Away:</label>
+      <input type="number" id="distance" name="distance" ng-model="distanceRadius"/>
+    </div>
+
+
+    <button ng-click="submitAddress();closeNav();changeValue();">Submit</button>
+
+  </form>
+  </div>
   <div> poop </div>
   <a href="#/results">Results</a>
   <a href="#">Random</a>
