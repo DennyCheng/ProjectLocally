@@ -28,6 +28,7 @@
   </head>
 
   <body ng-app="myApp" ng-controller="naviController">
+    <script> var potato = false</script>
     <!-- Start of add -->
     <!-- <div ng-controller="naviController"> -->
 
@@ -35,7 +36,7 @@
   <img src="/public/icons/grain.png" alt="Mountain View" style="width:190px;height:125px;">
   <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
   <a href="#/home" ng-click="closeNav()" >Welcome</a>
-  <a ng-click="changeValue()">Search</a>
+  <a ng-click="changeValue();">Search</a>
 
   <div ng-show="booleanClick" ng-animate="'slide'" id="slideBox">
   <form id="addressForm">

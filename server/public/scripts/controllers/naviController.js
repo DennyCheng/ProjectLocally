@@ -56,10 +56,10 @@ $scope.submitAddress = function(){
  //converts miles inputed into meters (which proximity method needs)
  var radius = ($scope.distanceRadius / 0.00062137);
  console.log('the radius is',radius);
- $scope.dataFactory.retrieveResults(address,radius).then(function(){
-   $scope.results = $scope.dataFactory.getResults();
-   console.log('back on client',$scope.results);
-  });
+ $scope.dataFactory.retrieveResults(address,radius);
+ $scope.dataFactory.elimnatePrevious();
+  //  $scope.results = $scope.dataFactory.getResults();
+  //  console.log('back on client',$scope.results);
     $scope.stringAddress = '';
     $scope.newAddress = {};
     $scope.distanceRadius='';
@@ -76,5 +76,8 @@ $scope.changeValue = function(){
   }
 };
 
+$scope.fresh = function(){
+  $scope.dataFactory.getRefresh();
+};
 
 }]); //end of factory
