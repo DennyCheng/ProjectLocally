@@ -1,24 +1,20 @@
-<h1>Hello :D From home partial</h1>
-<div>
 <ng-map default-style="true" class="map" zoom="13" center="[{{test.latitude}},{{test.longitude}}]">
-      <!-- <p ng-repeat = "x in results">{{x.blatitude}},{{x.blongitude}}</p> -->
       <marker position=[{{test.latitude}},{{test.longitude}}] icon="/public/icons/house.png" on-click="vm.showUserDetail(test)">
       </marker>
       <info-window id="userWindow">
-      <div> <!-- Took out ng-non-bindable="" in this div -->
+      <div>
           <div class="name">Starting Location</div>
           <div class="userAddress">{{test.address.address}}</div>
 
       </div>
       </info-window>
 
-      <!-- This is my starting point-->
       <marker ng-repeat="x in results" position=[{{x.blatitude}},{{x.blongitude}}] on-click="vm.showDetail(x)"
       icon="/public/icons/purple-dot.png">
       </marker>
 
       <info-window id="infoWindow">
-      <div> <!-- Took out ng-non-bindable="" in this div -->
+      <div>
           <div class="name">{{vm.location.bname}}</div>
           <div class="cuisine">Cuisine: {{vm.location.bcuisine}}</div>
           <div class="address">Address: {{vm.location.baddress}}</div>
@@ -40,10 +36,21 @@
 
 </div>
 
-<div id="directions-panel" style="width: 28%; float:left; height: 100%; overflow: auto; padding: 0px 5px">
+<div id="directions-panel">
+  <h1 id="titleNames">Directions</h1>
 </div>
 
-<!-- <div ng-include="'/public/views/partials/resultsPage.html'"></div> -->
-<div ng-model = "results">
-  {{results}}
+
+<div id="searchResults" ng-if = "results.length > 0">
+  <h1 id="titleNames">Results</h1>
+  <ol type="1">
+    <li ng-repeat="x in results">
+    <div>
+      {{x.bname}}<br/>
+      Cuisine:<br /><em class="infoText">{{x.bcuisine}}</em><br/>
+      Address: <br /><em class="infoText">{{x.baddress}}</em><br />
+      Phone Number:<br /><em class="infoText">{{x.bphone}}</em><br/>
+    </div>
+    </li>
+  </ol>
 </div>

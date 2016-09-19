@@ -20,22 +20,20 @@ setInterval(refreshData, 2000);
 
 
 $scope.test = $scope.dataFactory.getAddress();
-console.log($scope.test);
-var fuck = $scope.dataFactory.replaceArray();
-console.log('this is homeController',fuck);
+$scope.dataFactory.replaceArray();
 $scope.dataFactory.getThisData();
 $scope.results = $scope.dataFactory.getResults();
-console.log($scope.results);
+
 
 
 $scope.vm.showDetail = function(e, location) {
    $scope.vm.location = location;
-   $scope.vm.map.showInfoWindow('infoWindow', this.getPosition());  //put infoWindow at same point as marker
+   $scope.vm.map.showInfoWindow('infoWindow', this.getPosition());
  };
 
  $scope.vm.showUserDetail = function(e, location) {
     $scope.vm.location = location;
-    $scope.vm.map.showInfoWindow('userWindow', this.getPosition());  //put infoWindow at same point as marker
+    $scope.vm.map.showInfoWindow('userWindow', this.getPosition());
   };
 
 

@@ -7,6 +7,9 @@
     <script type="text/javascript" src="/public/scripts/client_app.js"></script>
     <link rel="stylesheet" href="/public/vendors/bootstrap.min.css"/>
     <link rel="stylesheet" href="/public/styles/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
     <!-- Controllers -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrTMzwjofj3pg4Z4wicyU277BvSlUJ0GE&callback" async defer></script>
     <script src="http://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script>
@@ -15,30 +18,32 @@
     <script src="/public/vendors/ng-map.min.js"></script>
     <script src="/public/scripts/client_app.js"></script>
     <script src="/public/vendors/angular-animate.min.js"></script>
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script> -->
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
 
     <script type="text/javascript" src="/public/scripts/services/dataFactory.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/homeController.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/resultsController.js"></script>
-    <script type="text/javascript" src="/public/scripts/controllers/testController.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/naviController.js"></script>
-
     <title>Locally</title>
+    <button class ="buttonNav" ng-click="openNav()">Search</button>
+
+    <div id ="landingTitle">
+    <h1>Locally</h1>
+    </div>
+
   </head>
 
+
   <body ng-app="myApp" ng-controller="naviController">
-    <script> var potato = false</script>
-    <!-- Start of add -->
-    <!-- <div ng-controller="naviController"> -->
 
   <div id="mySidenav" class="sidenav">
-  <img src="/public/icons/grain.png" alt="Mountain View" style="width:190px;height:125px;">
+  <img class="logo" src="/public/icons/green_logos.png" alt="Mountain View" >
   <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
   <a href="#/home" ng-click="closeNav()" >Welcome</a>
   <a ng-click="changeValue();">Search</a>
 
   <div ng-show="booleanClick" ng-animate="'slide'" id="slideBox">
+
   <form id="addressForm">
     <div>
       <label for ="street">Street:</label>
@@ -65,32 +70,23 @@
       <input type="number" id="distance" name="distance" ng-model="distanceRadius"/>
     </div>
 
-
     <button ng-click="submitAddress();closeNav();changeValue();">Submit</button>
 
   </form>
   </div>
-  <div> poop </div>
-  <a href="#/results">Results</a>
-  <a href="#">Random</a>
+  <div></div>
+  <a href="#/results"ng-click="closeNav()";>Results</a>
+  <a href="#" ng-click="closeNav()">Random</a>
   <div ng-include="'/public/views/partials/resultsPage.html'"></div>
 </div>
 
-<!-- Use any element to open the sidenav -->
-<!-- <span ng-click="openNav()">open</span> -->
-
-
-<!--  End of add-->
-
-<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="meow">
-  <button ng-click="openNav()">Search</button>
-    <!-- <h1 > Hello map should be below</h1> -->
-
+  <!-- <button ng-click="openNav()">Search</button> -->
 
     <main >
     <div ng-view> </div>
-  </main>
+    </main>
+
 </div>
   </body>
 </html>

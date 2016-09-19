@@ -3,9 +3,6 @@ html, body {
   margin: 0;
   padding: 0;
 }
-#map {
-  height: 100%;
-}
 
 /* The side navigation menu */
 .sidenav {
@@ -17,8 +14,9 @@ html, body {
     left: 0;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    padding-top: 10px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    text-decoration: underline;
 }
 
 /* The navigation menu links */
@@ -26,7 +24,7 @@ html, body {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #60656F;
     display: block;
     transition: 0.3s
 }
@@ -67,18 +65,94 @@ html, body {
 
 #slideBox {
   height: auto;
-  background-color: white;
-  text-align: center;
-}
-
-#slideBox {
+  background-color: auto;
+  text-align: right;
+  margin-right: 20px;
   -webkit-transition:all linear 0.5s;
   transition:all linear 0.5s;
 }
+
+
 #slideBox.ng-hide {
-  opacity:0;
+  opacity:10;
+}
+
+body{
+  background-color: #F7F7FF !important;
+  font-family: 'Baloo Tamma', cursive;
+
 }
 
 .name{
   font-weight: bold;
+}
+
+
+#logo{
+  margin-right: 20px;
+  width:150px;
+  height:150px;
+}
+
+
+#addressForm{
+  background-color: #60656F;
+  opacity: 20;
+   border: none;
+   color: #279AF1;
+   cursor: pointer;
+   font-weight: bold;
+}
+
+#landingTitle{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  text-align: center;
+}
+#landingTitle h1{
+  font-size: 500%;
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+
+
+.buttonNav{
+  text-align: none;
+}
+
+#stripColor{
+  background-color: red;
+}
+#directions-panel{
+  width: 400px;
+  float:left;
+  height: 100%;
+  display: inline-block !important;
+}
+#searchResults {
+    overflow: scroll;
+    float: left;
+    width: 300px;
+    display: inline-block;
+    background-color: #60656F;
+}
+
+.infoText{
+  font-weight: lighter;
+  color: #D1EFB5;
+}
+#meow{
+  height:150%;
+
+}
+
+.map {
+  height: 790px !important;
+  width: 60%;
+  display:inline-block !important;
+}
+#smallTitle{
+  font-size: 100%;
+}
+#titleNames{
+    font-family: 'Lobster', cursive;
 }

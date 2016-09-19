@@ -20,28 +20,20 @@ var replaceArray = [];
     //return those results and make a GET request and do comparative logic to find results
     currentInfo.address = address;
     currentInfo.distance = distance;
-    console.log("before", results);
+
     $http.post('/test',address).then(function(response){
-      console.log("after", results);
       addressLatLong = response.data;
-      console.log("results from API request is", addressLatLong);
       currentInfo.latitude = response.data.latitude;
       currentInfo.longitude = response.data.longitude;
-    
+
       //start of GET request to get businesses
       $http.get('/test').then(function(response){
-        console.log('GET response is',response);
-        // if(results != []){
-        //   results = [];
-        //   console.log(results);
-        // }
-        console.log(results);
         var business = response.data;
         for(var i = 0; i < business.length; i++){
           if(geolib.isPointInCircle({latitude: addressLatLong.latitude, longitude: addressLatLong.longitude},{latitude: business[i].blatitude, longitude: business[i].blongitude},distance)){
              replaceArray.push(business[i]);
           }
-        };//end of for loop
+        };
       });
     });
     results = results;
