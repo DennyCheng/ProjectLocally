@@ -24,6 +24,8 @@
     <script type="text/javascript" src="/public/scripts/controllers/homeController.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/resultsController.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/naviController.js"></script>
+    <script type="text/javascript" src="/public/scripts/controllers/funController.js"></script>
+
     <title>Locally</title>
     <button class ="buttonNav" ng-click="openNav()">Search</button>
 
@@ -76,7 +78,7 @@
   </div>
   <div></div>
   <a href="#/results"ng-click="closeNav()";>Results</a>
-  <a href="#" ng-click="closeNav()">Random</a>
+  <a href="#/fun" ng-click="closeNav()">Random</a>
   <div ng-include="'/public/views/partials/resultsPage.html'"></div>
 </div>
 

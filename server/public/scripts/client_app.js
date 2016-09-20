@@ -20,6 +20,10 @@ myApp.config(['$routeProvider',function($routeProvider){
       templateUrl:'/public/views/index.html',
       controller:'naviController'
     })
+    .when('/fun',{
+      templateUrl:'/public/views/partials/forFun.html',
+      controller:'funController'
+    })
     .otherwise({
       redirectTo:'home'
     });
